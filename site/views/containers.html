@@ -1,0 +1,56 @@
+<h2>Monitored containers</h2>
+<h3>Up to date containers</h3>
+<table class="ink-table alternating">
+    <thead>
+        <tr>
+            <th>Container Name</th>
+            <th>Container ID</th>
+            <th>Last Seen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="container in upToDate | orderBy:lastSeen:false">
+            <td>
+                <a ng-href="#/details/{{container.id}}">
+                    <span ng-bind="container.name"></span>
+                </a>
+            </td>
+            <td>
+                <a ng-href="#/details/{{container.id}}">
+                    <span ng-bind="container.id"></span>
+                </a>
+            </td>
+            <td>
+                <span ng-bind="container.lastSeen | date:'yyyy-MM-dd HH:mm:ss'"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Outdated containers</h3>
+<table class="ink-table alternating">
+    <thead>
+    <tr>
+        <th>Container Name</th>
+        <th>Container ID</th>
+        <th>Last Seen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="container in outdated | orderBy:lastSeen:false">
+        <td>
+            <a ng-href="#/details/{{container.id}}">
+                <span ng-bind="container.name"></span>
+            </a>
+        </td>
+        <td>
+            <a ng-href="#/details/{{container.id}}">
+                <span ng-bind="container.id"></span>
+            </a>
+        </td>
+        <td>
+            <span ng-bind="container.lastSeen | date:'yyyy-MM-dd HH:mm:ss'"></span>
+        </td>
+    </tr>
+    </tbody>
+</table>

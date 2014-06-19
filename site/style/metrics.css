@@ -1,0 +1,29 @@
+header {
+  height: 10%;
+}
+.graphContainer,
+.dataContainer {
+  width: 49%;
+  height: 40%;
+  max-height: 500px;
+  min-height: 200px;
+  margin: 0.5%;
+  float: left;
+}
+.graphContainer.graphContainer,
+.dataContainer.graphContainer {
+  border-bottom: double 1px black;
+}
+.graphContainer.graphContainer svg,
+.dataContainer.graphContainer svg {
+  max-height: 400px;
+}
+.graphContainer .title h4,
+.dataContainer .title h4 {
+  vertical-align: top;
+}
+.graphContainer .rickshaw_legend li,
+.dataContainer .rickshaw_legend li {
+  clear: none;
+  float: left;
+}
