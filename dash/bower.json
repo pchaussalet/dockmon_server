@@ -1,0 +1,24 @@
+{
+  "name": "dockmon-server",
+  "version": "0.0.1",
+  "authors": [
+    "Pierre Chaussalet <pchaussalet@gmail.com>"
+  ],
+  "description": "Docker monitor - server part",
+  "main": "site/index.html",
+  "license": "Apache 2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-cookies": "~1.2.19"
+  },
+  "resolutions": {
+    "angular": "1.2.20-build.283+sha.873acf8"
+  }
+}

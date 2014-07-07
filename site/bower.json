@@ -1,0 +1,22 @@
+{
+  "name": "dockmon-auth",
+  "version": "0.0.1",
+  "authors": [
+    "Pierre Chaussalet <pchaussalet@gmail.com>"
+  ],
+  "description": "Docker monitor authentication server",
+  "main": "site/index.html",
+  "license": "Apache 2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Ink": "~3.0.2",
+    "jquery": "~2.1.1"
+  }
+}

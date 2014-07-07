@@ -1,0 +1,59 @@
+varnish:
+  build:  ./varnish
+  ports:
+    - "80:80"
+  links:
+    - "site:site"
+    - "dash:dash"
+    - "auth:auth"
+    - "metrics:metrics"
+  
+site:
+  build:  ./site
+  expose:
+    - 80
+  
+dash:
+  build:  ./dash
+  expose:
+    - 80
+
+auth:
+  build:  ./auth
+  expose:
+    - 9999
+  links:
+    - "redis:redis"
+    - "mongodb:mongodb"
+
+metrics:
+  build:  ./metrics
+  expose:
+    - 9999
+  links:
+    - "auth:auth"
+    - "redis:redis"
+    - "influxdb:influxdb"
+
+redis:
+  image:  dockerfile/redis
+  expose:
+    - 6379
+  ports:
+    - "6380:6379"
+
+influxdb:
+  image:  crosbymichael/influxdb
+  expose:
+    - 8083
+    - 8086
+  ports:
+    - "8083:8083"
+    - "8086:8086"
+
+mongodb:
+  image:  bacongobbler/mongodb
+  expose:
+    - 27017
+  ports:
+    - "27018:27017"

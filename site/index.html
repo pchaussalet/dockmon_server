@@ -5,25 +5,158 @@
     <title></title>
     <link rel="stylesheet" href="bower_components/Ink/dist/css/ink.min.css"/>
     <link rel="stylesheet" href="bower_components/Ink/dist/css/ink-flex.min.css"/>
-    <link rel="stylesheet" href="bower_components/rickshaw/rickshaw.min.css"/>
 
-    <link rel="stylesheet" href="style/metrics.css"/>
+    <link rel="stylesheet" href="styles/dockmon.css"/>
+    <link rel="stylesheet" href="styles/fonts/copystruct_normal_macroman/stylesheet.css"/>
+    <link rel="stylesheet" href="styles/fonts/copystruct_bold_macroman/stylesheet.css"/>
 </head>
 <body>
-    <section ng-view>
-    </section>
+    <div class="ink-grid no-padding">
+
+        <!--[if lte IE 9 ]>
+        <div class="ink-alert basic" role="alert">
+            <button class="ink-dismiss">&times;</button>
+                    <p>
+                        <strong>You are using an outdated Internet Explorer version.</strong>
+                        Please <a href="http://browsehappy.com/">upgrade to a modern browser</a> to improve your web experience.
+                    </p>
+                </div>
+                -->
+
+        <!-- Add your site or application content here -->
+
+        <header class="clearfix">
+            <nav class="ink-navigation xlarge-push-right large-push-right">
+                <ul class="menu horizontal black">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="column-group vertical-space">
+            <div class="all-100 banner">
+                <img src="img/logo_h_v0_large.png">
+            </div>
+        </div>
+
+        <section class="all-100">
+            <div class="xlarge-5 large-5 hide-medium"></div>
+            <div class="xlarge-30 large-30 all-33 align-center"><a href="http://auth.dockmon.io/google">Google</a></div>
+            <div class="xlarge-30 large-30 all-33 align-center">GitHub</div>
+            <div class="xlarge-30 large-30 all-33 align-center">LinkedIn</div>
+            <div class="xlarge-5 large-5 hide-small"></div>
+        </section>
+
+        <section class="all-100">
+            <h2 class="all-100 section_title">
+                <a id="features">
+                    Features
+                </a>
+            </h2>
+            <div class="column-group gutters">
+                <div class="xlarge-10 large-10 hide-small"></div>
+                <div class="xlarge-40 large-40 all-50 align-center">
+                    <img src="">
+                    <p class="quarter-top-space">
+                        Feature 1
+                    </p>
+                </div>
+                <div class="xlarge-40 large-40 all-50 align-center">
+                    <img src="">
+                    <p class="quarter-top-space">
+                        Feature 2
+                    </p>
+                </div>
+                <div class="xlarge-10 large-10 hide-small hide-tiny"></div>
+            </div>
+            <div class="column-group gutters">
+                <div class="xlarge-10 large-10 hide-small"></div>
+                <div class="xlarge-40 large-40 all-50 align-center">
+                    <img src="">
+                    <p class="quarter-top-space">
+                        Feature 3
+                    </p>
+                </div>
+                <div class="xlarge-40 large-40 all-50 align-center">
+                    <img src="">
+                    <p class="quarter-top-space">
+                        Feature 4
+                    </p>
+                </div>
+                <div class="xlarge-10 large-10 hide-small hide-tiny"></div>
+            </div>
+            <div class="column-group gutters">
+                <div class="xlarge-10 large-10 hide-small"></div>
+                <div class="xlarge-40 large-40 all-50 align-center">
+                    <img src="">
+                    <p class="quarter-top-space">
+                        Feature 5
+                    </p>
+                </div>
+                <div class="xlarge-40 large-40 all-50 align-center">
+                    <img src="">
+                    <p class="quarter-top-space">
+                        Feature 6
+                    </p>
+                </div>
+                <div class="xlarge-10 large-10 hide-small hide-tiny"></div>
+            </div>
+        </section>
+
+        <section class="all-100">
+            <h2 class="all-100 section_title">
+                <a id="pricing">
+                    Pricing
+                </a>
+            </h2>
+            <div class="column-group gutters">
+                <div class="xlarge-10 large-10 hide-small"></div>
+                <div class="xlarge-40 large-40 all-50 align-center">
+                    <img src="">
+                    <p class="quarter-top-space">
+                        Free plan
+                    </p>
+                </div>
+                <div class="xlarge-40 large-40 all-50 align-center">
+                    <img src="">
+                    <p class="quarter-top-space">
+                        Paid plan
+                    </p>
+                </div>
+                <div class="xlarge-10 large-10 hide-small hide-tiny"></div>
+            </div>
+        </section>
+
+        <section class="all-100">
+            <h2 class="all-100 section_title">
+                <a id="about">
+                    About
+                </a>
+            </h2>
+            <div class="column-group gutters">
+                <div class="xlarge-10 large-10 hide-small"></div>
+                <div class="xlarge-80 large-80 all-100 align-center">
+                    <img src="">
+                    <p class="quarter-top-space">
+                        About me and myself.
+                    </p>
+                </div>
+                <div class="xlarge-10 large-10 hide-small"></div>
+            </div>
+        </section>
+
+        <footer class="clearfix">
+            <div class="ink-grid">
+                <ul class="unstyled inline half-vertical-space">
+                </ul>
+                <p class="note"></p>
+            </div>
+        </footer>
+    </div>
+
 
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="bower_components/d3/d3.min.js"></script>
-    <script src="bower_components/rickshaw/rickshaw.min.js"></script>
-    <script src="bower_components/angular-rickshaw/rickshaw.min.js"></script>
-    <script src="bower_components/n3-charts.line-chart/dist/line-chart.min.js"></script>
-
-    <script src="scripts/main.js"></script>
-
-    <script src="scripts/controllers/containers.js"></script>
-    <script src="scripts/controllers/containerMetrics.js"></script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+{
+  "name": "dockmon-metrics",
+  "version": "0.0.1",
+  "description": "Docker monitor metrics server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "Apache 2",
+  "dependencies": {
+    "restify": "^2.8.1",
+    "q": "^1.0.1",
+    "async": "^0.9.0",
+    "influx": "^1.0.0",
+    "then-redis": "^0.3.12",
+    "flat": "^1.2.1",
+    "minimist": "^0.2.0"
+  },
+  "devDependencies": {
+    "nodeunit": "^0.9.0"
+  }
+}
