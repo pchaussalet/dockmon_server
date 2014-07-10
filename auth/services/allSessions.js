@@ -36,8 +36,8 @@ exports.getSession = function(id, userId) {
     var deferred = q.defer();
     db.get(id).then(function(redisUserId) {
         if (userId == redisUserId) {
+            db.expire(id, SESSION_DURATION);
             deferred.resolve();
-            db.expire(redisUserId, SESSION_DURATION);
         } else {
             deferred.reject();
         }
