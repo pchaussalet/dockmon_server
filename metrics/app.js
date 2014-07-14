@@ -32,7 +32,7 @@ server.use(restify.bodyParser());
 server.use(restify.queryParser());
 
 server.use(restify.CORS());
-server.on('MethodNotAllowed', function(req, res) {
+server.on('MethodNotAllowed', function(req, res, next) {
     if (req.method.toLowerCase() === 'options') {
         var allowHeaders = ['Accept', 'Accept-Version', 'Content-Type', 'Api-Version', 'x-user', 'x-session'];
 
@@ -43,17 +43,20 @@ server.on('MethodNotAllowed', function(req, res) {
         res.header('Access-Control-Allow-Methods', res.methods.join(', '));
         res.header('Access-Control-Allow-Origin', req.headers.origin);
 
-        return res.send(204);
+        res.send(204);
+        return next(false);
     }
-    else
-        return res.send(new restify.MethodNotAllowedError());
+    else {
+        res.send(new restify.MethodNotAllowedError());
+        return next(false);
+    }
 });
 
 server.post("/server/:id", collector.collect);
-server.get("/container", auth.validate, container.list);
-server.get("/container/:id/metrics", auth.validate, container.metrics);
 
+server.get("/container/:id/metrics", auth.validate, container.metrics);
 server.get("/container/:id/statics", auth.validate, container.statics);
+server.get("/container", auth.validate, container.list);
 
 server.on('after', restify.auditLogger({
     log: bunyan.createLogger({

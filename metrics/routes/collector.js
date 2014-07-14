@@ -3,7 +3,6 @@ var redis = require('../services/redis');
 
 exports.collect = function(req, res, next) {
     try {
-        var hostId = req.params.id;
         var userId = req.headers['x-user'];
         delete req.params.id;
         var date = new Date();
@@ -14,11 +13,12 @@ exports.collect = function(req, res, next) {
             status_series: []
         };
 
+        var currentDate = new Date().getTime();
         Object.keys(req.body).forEach(function(containerId) {
             var data = req.body[containerId];
-            getPointsForContainer(userId, hostId, containerId, data, date, series);
-            data.date = new Date().getTime();
-            redis.saveValues('container:' + userId + ':' + containerId, data);
+            getPointsForContainer(userId, req.params.id, containerId, data, date, series);
+            data.date = currentDate;
+            redis.saveValues(['container', userId,  containerId].join(':'), data);
         });
 
         influxdb.saveSeries(series).then(function() {
@@ -27,8 +27,8 @@ exports.collect = function(req, res, next) {
         }, function(err) {
             return next(err);
         });
-    } catch (e) {
-        console.log(e);
+    } catch (err) {
+        next(err);
     }
 };
 

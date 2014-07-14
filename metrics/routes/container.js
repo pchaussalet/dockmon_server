@@ -2,44 +2,30 @@ var influxdb = require('../services/influxdb');
 var redis = require('../services/redis');
 
 exports.metrics = function(req, res, next) {
-    var containerId = req.headers['x-user'] + ':' + req.params.id;
-    var YESTERDAY = new Date().setDate(new Date().getDate() - 1);
-    var since = +req.params.since || YESTERDAY;
-    influxdb.getContainerData(containerId, since).then(function(data) {
-        if (Object.keys(data).length != 0) {
-            res.send(data);
-        } else {
-            res.send(204);
-        }
+    var since = +req.params.since || new Date().setDate(new Date().getDate() - 1);
+    influxdb.getContainerData(req.headers['x-user'], req.params.id, since).then(function(data) {
+        (Object.keys(data).length != 0) ? res.send(data) : res.send(204);
+        return next();
     }, function(err) {
-        res.send(500, err);
-    }).finally(function() {
-        next();
+        return next(err);
     });
 };
 
 exports.statics = function(req, res, next) {
     var containerId = req.headers['x-user'] + ':' + req.params.id;
     redis.getValues('container:' + containerId).then(function(values) {
-        if (values) {
-            res.send(values);
-        } else {
-            res.send(204);
-        }
+        values ? res.send(values) : res.send(204);
+        return next();
     }, function(err) {
-        res.send(500, err);
-    }).finally(function() {
-        next();
+        return next(err);
     });
 };
 
 exports.list = function(req, res, next) {
-    redis.listContainers(req.headers['x-user']).then(function(data) {
-        if (data) {
-            res.send(data);
-        } else {
-            res.send(204);
-        }
-        next();
+    redis.listContainers(req.headers['x-user']).then(function(containers) {
+        containers ? res.send(containers) : res.send(204);
+        return next();
+    }, function(err) {
+        return next(err);
     });
 };

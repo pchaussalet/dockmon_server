@@ -51,10 +51,10 @@ exports.saveSeries = function(series) {
     return deferred.promise;
 };
 
-exports.getContainerData = function(containerId, since) {
+exports.getContainerData = function(userId, containerId, since) {
     const EXCLUDED_COL = ['sequence_number', 'container', 'host'];
     var deferred = q.defer();
-    var query = "SELECT * FROM /.*/ group by (1s) where container = '" + containerId + "' and time > " + since * 1000000;
+    var query = "SELECT * FROM /.*/ group by (1s) where userId = '" + userId + "' and container = '" + containerId + "' and time > " + since * 1000000;
     client.query(query, function(err, series) {
         if (err) deferred.reject(err);
         var points = {};

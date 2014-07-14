@@ -2,12 +2,15 @@ var q = require('q');
 var redis = require('then-redis');
 var flat = require('flat');
 
-var db;
+var connections = [];
+
 var options = {
     host: 'redis',
     port: 6379,
     database: 1
 };
+
+var db;
 var backup = {
     everySecs: 60,
     everyWrites: 1000
@@ -18,8 +21,7 @@ redis.connect(options).then(function(conn) {
 });
 
 exports.saveValues = function(key, values) {
-    var flatValue = flat.flatten(values);
-    return db.hmset(key, flatValue);
+    return db.hmset(key, flat.flatten(values));
 };
 
 exports.getValues = function(key) {
