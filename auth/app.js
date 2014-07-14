@@ -55,7 +55,6 @@ server.on('after', restify.auditLogger({
 
 authProvider.initialize(server);
 
-server.post('/session', session.open);
 server.get('/session/:id', session.validate);
 
 var argv = minimist(process.argv.slice(2));

@@ -5,11 +5,9 @@ exports.validate = function(req, res, next) {
     var userId = req.headers['x-user'];
     if (userId) {
         allSessions.getSession(sessionId, userId).then(function(session) {
-            console.log('session', session);
             res.send(204);
             return next();
         }, function(err) {
-            console.log('err', err);
             if (err) return next(err);
             res.location('http://www.dockmon.io');
             res.send(302);
@@ -20,8 +18,4 @@ exports.validate = function(req, res, next) {
         res.send(302);
         return next();
     }
-};
-
-exports.open = function(req, res, next) {
-    console.log(arguments);
 };

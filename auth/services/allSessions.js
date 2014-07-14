@@ -17,8 +17,6 @@ var backup = {
 redis.connect(options).then(function(conn) {
     db = conn;
     db.save(backup.everySecs, backup.everyWrites);
-}, function(err) {
-    console.log(err);
 });
 
 exports.openSession = function(userId) {
