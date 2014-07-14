@@ -24,7 +24,16 @@
                 </small>
             </h4>
         </div>
-        <rickshaw rickshaw-options="cpuOptions" rickshaw-series="cpuMetrics" rickshaw-features="cpuFeatures"></rickshaw>
+        <nvd3-line-chart
+                data="cpuMetrics"
+                showXAxis="true"
+                showYAxis="true"
+                showLegend="true"
+                tooltips="true"
+                interactive="true"
+                xAxisTickFormat="getTime()"
+                y="getPerSecond()">
+        </nvd3-line-chart>
     </div>
     <div class="graphContainer">
         <div class="title">
@@ -40,7 +49,14 @@
                 </small>
             </h4>
         </div>
-        <rickshaw rickshaw-options="memoryOptions" rickshaw-series="memoryMetrics" rickshaw-features="memoryFeatures"></rickshaw>
+        <nvd3-line-chart
+                data="memoryMetrics"
+                showXAxis="true"
+                showYAxis="true"
+                showLegend="true"
+                tooltips="true"
+                interactive="true">
+        </nvd3-line-chart>
     </div>
     <div class="graphContainer">
         <div class="title">
@@ -56,7 +72,15 @@
                 </small>
             </h4>
         </div>
-        <rickshaw rickshaw-options="networkOkOptions" rickshaw-series="networkOkMetrics" rickshaw-features="networkOkFeatures"></rickshaw>
+        <nvd3-line-chart
+                data="networkMetrics"
+                showXAxis="true"
+                showYAxis="true"
+                showLegend="true"
+                tooltips="true"
+                interactive="true"
+                y="getPerSecond()">
+        </nvd3-line-chart>
     </div>
     <div class="dataContainer">
         <table class="ink-table">

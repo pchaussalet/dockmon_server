@@ -16,9 +16,12 @@
     "tests"
   ],
   "dependencies": {
-    "angular-cookies": "~1.2.19"
+    "angular-cookies": "~1.2.19",
+    "nvd3": "~1.1.15-beta",
+    "angularjs-nvd3-directives": "~0.0.7"
   },
   "resolutions": {
-    "angular": "1.2.20-build.283+sha.873acf8"
+    "angular": "~1.2.0",
+    "d3": "3.4.9"
   }
 }

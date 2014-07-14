@@ -1,7 +1,7 @@
 angular.module('dockmon.controllers', []);
 angular.module('dockmon.services', []);
 
-angular.module('dockmon', [ 'ngRoute', 'ngCookies', 'n3-charts.linechart', 'dockmon.controllers', 'dockmon.services', 'angular-rickshaw' ])
+angular.module('dockmon', [ 'ngRoute', 'ngCookies', 'n3-charts.linechart', 'dockmon.controllers', 'dockmon.services', 'angular-rickshaw', 'nvd3ChartDirectives' ])
 .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/list', {
