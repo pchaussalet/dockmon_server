@@ -23,7 +23,7 @@ auth:
   expose:
     - 9999
   links:
-    - "redis:redis"
+    - "redissession:redis"
     - "mongodb:mongodb"
 
 metrics:
@@ -32,10 +32,17 @@ metrics:
     - 9999
   links:
     - "auth:auth"
-    - "redis:redis"
+    - "redisdata:redis"
     - "influxdb:influxdb"
 
-redis:
+redissession:
+  image:  dockerfile/redis
+  expose:
+    - 6379
+  ports:
+    - "6381:6379"
+
+redisdata:
   image:  dockerfile/redis
   expose:
     - 6379
@@ -53,6 +60,7 @@ influxdb:
 
 mongodb:
   image:  bacongobbler/mongodb
+  command:  "mongod --smallfiles --noprealloc"
   expose:
     - 27017
   ports:
